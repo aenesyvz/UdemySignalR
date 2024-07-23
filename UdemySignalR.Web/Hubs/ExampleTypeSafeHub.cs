@@ -33,17 +33,14 @@ public class ExampleTypeSafeHub : Hub<IExampleTypeSafeHub>
         await Clients.Client(connectionId).ReceiveMessageForIndividualClient(message);
     }
 
+    // ------------------------------------ Stream Operation ------------------------------------
     public async Task BroadcastStreamDataToAllClient(IAsyncEnumerable<string> nameAsChunks)
     {
-
-
         await foreach (var name in nameAsChunks)
         {
-
             await Task.Delay(1000);
             await Clients.All.ReceiveMessageAsStreamForAllClient(name);
         }
-
     }
 
     public async Task BroadcastStreamProductToAllClient(IAsyncEnumerable<Product> productAsChunks)
@@ -61,16 +58,11 @@ public class ExampleTypeSafeHub : Hub<IExampleTypeSafeHub>
 
     public async IAsyncEnumerable<string> BroadCastFromHubToClient(int count)
     {
-
         foreach (var item in Enumerable.Range(1, count).ToList())
         {
             await Task.Delay(1000);
             yield return $"{item}. data";
         }
-
-
-
-
     }
 
 

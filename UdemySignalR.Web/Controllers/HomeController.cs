@@ -18,6 +18,17 @@ namespace UdemySignalR.Web.Controllers
             return View();
         }
 
+        public IActionResult Stream()
+        {
+            return View();
+        }
+
+        public IActionResult APIHubContextExample()
+        {
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
